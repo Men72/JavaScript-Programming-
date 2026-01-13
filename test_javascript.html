@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test_javascript</title>
+
+    <script>
+        
+        function alertMessage(msg) {
+            alert("Result: " + msg);
+        }
+
+        function addition(num1, num2, num3) {
+            return num1 + num2 + num3;
+        }
+
+        function passScore(score) {
+            return score >= 60 ? "Pass" : "Fail";
+        }
+
+       
+        let score = addition(10, 25, 30);
+
+       
+        function generateAddition(num1, num2, num3) {
+            document.getElementById("additionResult").innerHTML = addition(num1, num2, num3);
+        }
+
+
+        function generateResult(score) {
+            document.getElementById("resultStatus").innerHTML = passScore(score) + " = " + score;
+        }
+        function resetresults() {
+            document.getElementById("additionResult").innerHTML = "";
+            document.getElementById("resultStatus").innerHTML = "";
+        }
+    </script>
+
+    <style>
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="generateAddition(10, 25, 30)">Addition</button>
+    <button onclick="generateResult(score)">Generate Result</button>
+    <button onclick="resetresults()">Reset</button>
+
+    <h3>Addition Result: <span id="additionResult"></span></h3>
+    <h3>Pass/Fail: <span id="resultStatus"></span></h3>
+    
+</body>
+</html>
