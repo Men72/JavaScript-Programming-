@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script>
+            function changeImage(img) {
+                document.getElementById('mainImage').src = img +".jpg";
+            }
+            function changeBoard(border) {
+                document.getElementById('mainImage').style.border = border + "px solid red";
+            }
+            function changeOpacity(opacity1) {
+                document.getElementById('mainImage').style.opacity = opacity1;
+            }
+        </script>
+    <style>
+        img { 
+            max-width: 500px; 
+            display: block; 
+            margin: 10px 0; 
+        }
+        .links a { 
+            cursor: pointer; 
+            color: blue; 
+            text-decoration: underline; 
+            margin: 0 6px; 
+        }
+        form {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            font-size: 16px;    
+            justify-items: center;
+            margin-top: 225px;
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .board {
+            border: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <img id="mainImage" src="P_1.jpg" alt="Image 1" >
+
+        <div class="links">Picture: 
+            (<a onclick="changeImage('P_1')">Picture 1</a>,
+            <a onclick="changeImage('P_2')">Picture 2</a>,
+            <a onclick="changeImage('P_3')">Picture 3</a>)
+        </div>
+        <hr>
+        <div class="links"> Board: 
+            (<a onclick="changeBoard(0)">None</a>,
+            <a onclick="changeBoard(5)">Board 5px</a>,
+            <a onclick="changeBoard(10)">Board 10px</a>)
+        </div>
+        <hr>
+        <div class="links"> Opacity: 
+            (<a onclick="changeOpacity(1)">100%</a>,
+            <a onclick="changeOpacity(0.5)">50%</a>,
+            <a onclick="changeOpacity(0.2)">20%</a>)
+        </div>
+
+    </form>
+
+</body>
+</html>

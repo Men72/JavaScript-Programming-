@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Adding minor styling to make it look like a real page */
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .title { font-weight: bold; font-size: 1.2em; }
+        button { margin: 10px 0; cursor: pointer; }
+        hr { margin: 20px 0; border: 0; border-top: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+    <h3>Element-1</h3>
+    <button type="button" onclick="alert('Hello Wolrd!!!')">Change1</button>
+    <hr>
+
+    <h3>Element-2</h3>
+    <button type="button" onclick="changeElement2()">Change2</button>
+    <hr>
+
+    <div class="title">Element-3</div>
+    <button type="button" onclick="changeElement3()">Change3</button>
+    <hr>
+
+    <div id="title2">Element-4</div>
+    <button type="button" onclick="changeElement4()">Change4</button>
+    <hr>
+    <div>Reset Element</div>
+    <button type="button" onclick="location.reload()">Reset</button>
+
+    <script>
+        function changeElement2(){
+            // Finds the second <h3> tag on the page
+            document.getElementsByTagName('h3')[1].innerHTML = "Hello World Element 2.";
+        }
+
+        function changeElement3(){
+            // Finds the first element with class="title"
+            document.getElementsByClassName('title')[0].innerHTML = "Hello World Element 3.";
+        }
+
+        function changeElement4(){
+            // Finds the specific element with id="title2"
+            document.getElementById('title2').innerHTML = "Hello World Element 4.";
+        }
+        function resetelement(){
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>

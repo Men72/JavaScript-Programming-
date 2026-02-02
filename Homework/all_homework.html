@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Checker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+
+
+        /* Top control box */
+        .control-box {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Button spacing */
+        .btn-group-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* Result boxes */
+        .result-box {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+    </style>
+    </head>
+
+    <body>
+
+    <div class="container py-5">
+
+        <div class="control-box text-center mb-5">
+            <h2 class="mb-3">Check Input Type</h2>
+
+            <input type="text" id="inputValue" class="form-control w-50 mx-auto" placeholder="Type something...">
+
+            <div class="btn-group-wrap">
+                <div>
+                <button class="btn btn-secondary" onclick="checktextornumber()">Text or Number</button>
+                    <div id="textOrNumberResult"></div>
+                </div>
+                
+                <div>
+                    <button class="btn btn-primary" onclick="checkNumber()">Check Number</button>
+                    <div id="checkNumberResult"></div>
+                </div>
+                <div>
+                    <button class="btn btn-dark" onclick="checkDecimal()">Check Decimal</button>
+                    <div id="decimalInputResult"></div>
+                </div>
+                <div>
+                    <button class="btn btn-success" onclick="checkPosNegDecimal()">Pos/Neg Decimal</button>
+                    <div id="posNegResult"></div>
+                </div>
+                <div>
+                    <button class="btn btn-info" onclick="checkEmail()">Check Email</button>
+                    <div class="" id="emailInputResult"></div>
+                </div>
+                <div>
+                    <button class="btn btn-warning" onclick="checkBoolean()">Check Boolean</button>
+                    <div id="booleanInputResult"></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        function getInputValue() {
+            return document.getElementById("inputValue").value.trim();
+        }
+
+        function checktextornumber() {
+            const val = getInputValue();
+            const n = parseFloat(val);
+            let result;
+
+            if (isNaN(n)) {
+                result = "It is the Text";
+            } else {
+                result = "It is the Number";
+            }
+
+            document.getElementById("textOrNumberResult").textContent = result;
+        }
+
+        function checkNumber() {
+            const n = parseFloat(getInputValue());
+            let result;
+
+            if (isNaN(n)) {
+                result = "It is not a number";
+            } else if (n > 0) {
+                result = "It is a Positive Number";
+            } else if (n < 0) {
+                result = "It is a Negative Number";
+            } else {
+                result = "It is Zero";
+            }
+
+            document.getElementById("checkNumberResult").textContent = result;
+        }
+
+        function checkDecimal() {
+            const n = parseFloat(getInputValue());
+            let result;
+
+            if (isNaN(n)) {
+                result = "It is not a number";
+            } else if (Number.isInteger(n)) {
+                result = "It is not a Decimal";
+            } else {
+                result = "It is a Decimal";
+            }
+
+            document.getElementById("decimalInputResult").textContent = result;
+        }
+
+        function checkPosNegDecimal() {
+            const n = parseFloat(getInputValue());
+            let result;
+
+            if (isNaN(n)) {
+                result = "It is not a number";
+            } else if (n > 0 && !Number.isInteger(n)) {
+                result = "It is a Positive Decimal";
+            } else if (n < 0 && !Number.isInteger(n)) {
+                result = "It is a Negative Decimal";
+            } else {
+                result = "It is not a Decimal";
+            }
+
+            document.getElementById("posNegResult").textContent = result;
+        }
+
+        function checkEmail() {
+            const val = getInputValue();
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let result;
+
+            if (regex.test(val)) {
+                result = "It is a Valid Email";
+            } else {
+                result = "It is an Invalid Email";
+            }
+
+            document.getElementById("emailInputResult").textContent = result;
+        }
+
+        function checkBoolean() {
+            const val = getInputValue().toLowerCase();
+            let result;
+
+            if (val === "true" || val === "false") {
+                result = "It is a Boolean";
+            } else {
+                result = "It is not a Boolean";
+            }
+
+            document.getElementById("booleanInputResult").textContent = result;
+        }
+
+    </script>
+
+</body>
+</html>
